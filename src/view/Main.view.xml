@@ -1,0 +1,91 @@
+<mvc:View 
+	height="100%"
+	controllerName="sap.ui.demo.hackernews.controller.Main" 
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:tnt="sap.tnt"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.m">
+
+	<tnt:ToolHeader>
+		<ToolbarSpacer/>
+		<core:Icon
+				src="sap-icon://sap-ui5"
+				size="1.5rem">
+		</core:Icon>
+		<IconTabHeader
+				id="iconTabHeader"
+				select="onTabSelect"
+				selectedKey="{view>/selectedTabKey}"
+				showOverflowSelectList="true"
+				backgroundDesign="Transparent">
+				<layoutData>
+					<OverflowToolbarLayoutData
+						priority="NeverOverflow"
+						shrinkable="true" />
+				</layoutData>
+				<items>
+					<IconTabFilter
+						text="{i18n>mainTabTopText}"
+						tooltip="{i18n>mainTabTopTooltip}"
+						key="news">
+					</IconTabFilter>
+					<IconTabFilter
+						text="{i18n>mainTabNewText}"
+						tooltip="{i18n>mainTabNewTooltip}"
+						key="newest">
+					</IconTabFilter>
+					<IconTabFilter
+						text="{i18n>mainTabShowText}"
+						tooltip="{i18n>mainTabShowTooltip}"
+						key="show">
+					</IconTabFilter>
+					<IconTabFilter
+						text="{i18n>mainTabAskText}"
+						tooltip="{i18n>mainTabAskTooltip}"
+						key="ask">
+					</IconTabFilter>
+					<IconTabFilter
+						text="{i18n>mainTabJobsText}"
+						tooltip="{i18n>mainTabJobsTooltip}"
+						key="jobs">
+					</IconTabFilter>
+				</items>
+		</IconTabHeader>
+		<ToolbarSpacer>
+			<layoutData>
+				<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="16px" />
+			</layoutData>
+		</ToolbarSpacer>
+		<Button id="about" 
+				type="Transparent" 
+				text="{i18n>mainAboutButtonTitle}"
+				tooltip="{i18n>mainAboutButtonTooltip}"
+				press="onNavBack">
+			<layoutData>
+				<OverflowToolbarLayoutData priority="NeverOverflow" />
+			</layoutData>
+		</Button>
+		<ToolbarSpacer/>
+	</tnt:ToolHeader>
+	<MessageStrip
+		id="msgStrip"
+		text="{i18n>offlineWarning}"
+		type="Warning"
+		showIcon="true"
+		showCloseButton="false"
+		customIcon="sap-icon://hello-world"
+		class="sapUiSmallMargin">
+	</MessageStrip>
+	<ScrollContainer
+		height="100%"
+		width="100%"
+		horizontal="true"
+		vertical="true"
+		id="resultContainer"
+		focusable="true">
+	</ScrollContainer>
+
+</mvc:View>
+

@@ -1,0 +1,153 @@
+{
+	"_version": "1.7.0",
+
+	"name": "OpenUI5 Hackernews PWA",
+    "short_name": "Hackernews",
+    "icons": [
+
+        {
+            "src": "icons/icon-128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon-152x152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#427CAC",
+
+	"sap.app": {
+		"id": "sap.ui.demo.hackernews",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}"
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "sap.ui.demo.hackernews.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "sap.ui.demo.hackernews.i18n.i18n"
+				}
+			}
+		},
+
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "sap.ui.demo.hackernews.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true,
+				"transition": "slide",
+				"bypassed": {
+				   "target": "notFound"
+				}
+			},
+
+			"routes": [
+				{
+					"pattern": "user/{userName}",
+					"name": "user",
+					"target": ["main"]
+				},
+
+				{
+					"pattern": "item/{id}",
+					"name": "comment",
+					"target": ["main"]
+				},
+
+				{
+					"pattern": ":?query:",
+					"name": "main",
+					"target": ["main"]
+				}
+			],
+
+			"targets": {
+				"main": {
+					"viewName": "Main",
+					"viewId": "main",
+					"viewLevel": 1
+				},
+				"notFound": {
+				   "viewName": "NotFound",
+				   "transition": "show"
+				}
+			}
+		},
+
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		}
+	}
+}

@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ObjectHeader
+        id="userHeader"
+        icon="sap-icon://customer"
+        backgroundDesign="White"
+        class="whiteBackground centerHeader"
+		title="User">
+		<attributes>
+			<ObjectAttribute id="aCreated" text="Created:" />
+			<ObjectAttribute id="aKarma" text="Karma" />
+			<ObjectAttribute id="aSubmissions" text="submissions" active="true" press="redirectToSubmissions"/>
+            <ObjectAttribute id="aComments" text="comments" active="true" press="redirectToComments"/>
+		</attributes>
+	</ObjectHeader>
+</core:FragmentDefinition>

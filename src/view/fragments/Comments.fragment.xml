@@ -1,0 +1,47 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <VBox fitContainer="true" >
+        <items>
+            <ObjectHeader
+                id="commentsHeader"
+                icon="sap-icon://comment"
+                backgroundDesign="White"
+                class="whiteBackground centerHeader"
+                title="Title">
+                <attributes>
+                    <ObjectAttribute id="aUrl" text="url" class="boldText"/>
+                    <ObjectAttribute id="aPoints" text="points"/>
+                    <ObjectAttribute id="aAuthor" text="by"/>
+                    <ObjectAttribute id="aTime" text="ago"/>
+                </attributes>
+            </ObjectHeader>
+
+            <Tree id="commentsTree" items="{path: '/comments'}" class="centerPage sapUiMediumMarginTop whiteBackground" busyIndicatorDelay="0">
+                <headerToolbar>
+                    <Toolbar id="tbComments">
+                        <content>
+                            <Title text="Comments" level="H2" />
+                        </content>
+                    </Toolbar>
+                </headerToolbar>
+                <CustomTreeItem>
+                    <VBox 
+                        fitContainer="true">
+                        <items>
+                            <HBox
+                                fitContainer="true">
+                                <items>
+                                    <Link class="descLinkCSS" text="{user}" press="handleUserClick"/>
+                                    <Text class="descCSS" text="{time_ago}"/>
+                                </items>
+                            </HBox>
+                            <FormattedText htmlText="{content}">
+                            </FormattedText>
+                        </items>
+                    </VBox>
+                </CustomTreeItem>
+            </Tree>
+        </items>
+    </VBox>
+</core:FragmentDefinition>

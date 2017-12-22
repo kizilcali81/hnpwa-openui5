@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<VBox fitContainer="true" >
+        <items>
+			<OverflowToolbar design="Solid" height="3rem" id="pageBar">
+				<ToolbarSpacer/>
+				<Button id="btnPrev" text="{i18n>buttonPrev}" type="Transparent" press="onPrevPressed" enabled="false"/>
+				<Title id="pageNum" text="1"/>
+				<Button id="btnNext" text="{i18n>buttonNext}" type="Transparent" press="onNextPressed"/>
+				<ToolbarSpacer/>
+			</OverflowToolbar> 
+			<List
+				class="centerPage"
+				noDataText="{i18n>noData}"
+				id="mainList">
+			</List>
+		</items>
+    </VBox>
+</core:FragmentDefinition>

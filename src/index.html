@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<!-- PWA related meta tags -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- PWA manifest -->
+		<link rel="manifest" href="manifest.json">
+
+		<!-- Add to home screen for Safari on iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Icon Explorer">
+
+		<!-- Windows related -->
+		<meta name="msapplication-TileImage" content="icons/mstile-150x150.png">
+		<meta name="msapplication-TileColor" content="#427CAC">
+
+		<!-- Statusbar Color for Chrome, Firefox OS and Opera -->
+		<meta name="theme-color" content="#427CAC">
+
+		<!-- Icons -->
+		<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+		<link rel="shortcut icon" href="/icons/favicon.svg">
+		<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+		<link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+
+		<style>
+			body {
+                background: #FAFAFA;
+                margin:0;
+			}
+	
+			#splash-screen {
+				color: #244C7C;
+				text-align: center;
+			}
+
+            .topnav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #2F3C48;
+            }
+
+            .topnav li {
+                float: left;
+            }
+
+            .topnav li a {
+                display: block;
+                color: white;
+                text-align: center;
+                font-family: "Helvetica";
+                padding: 15px;
+                text-decoration: none;
+            }
+
+            .topnav ul img{ 
+                float: left; 
+                width: 1.5rem;
+                height: 1.6rem;
+                margin-left: 22.3%;
+                padding: 0.7rem;
+            }
+
+            .navbar ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #F7F7F7;
+                border-bottom-style: solid;
+                border-width: 1px;
+                border-color: #E1E1E1;
+            }
+
+            .navbar li {
+                float: center;
+            }
+
+            .navbar li a {
+                display: block;
+                color: #000000;
+                text-align: center;
+                padding: 14px 16px;
+                font-family: "Calibri";
+                text-decoration: none;
+            }
+		</style>
+
+		<title>OpenUI5 Hacker News</title>
+
+		<script>
+			/**
+			 * Register the service worker
+			 */
+
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker
+					.register('./sw.js')
+					.then(function () { 
+						console.log('Service Worker Registered'); 
+					});
+			}
+		</script>
+
+		<script id="sap-ui-bootstrap"
+			src="https://openui5nightly.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m, sap.tnt"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-preload="async"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-xx-waitForTheme="true"
+			data-sap-ui-xx-supportedLanguages="en"
+			data-sap-ui-defaultLanguage="en"
+			data-sap-ui-resourceroots='{"sap.ui.demo.hackernews": ""}'>
+		</script>
+
+		<script>
+			sap.ui.getCore().attachInit(function () {
+				sap.ui.require([
+					"sap/m/Shell",
+					"sap/ui/core/ComponentContainer"
+				], function (Shell, ComponentContainer) {
+					var oCompContainer = new ComponentContainer({
+						height: "100%"
+					});
+	
+					// initialize the UI component
+					var oComponent = sap.ui.component({
+						async: true,
+						manifestFirst: true,
+						name: "sap.ui.demo.hackernews"
+					}).then(function(oComponent){
+						oCompContainer.setComponent(oComponent);
+					});
+	
+					new Shell({
+						showLogout:false,
+						app: oCompContainer,
+						appWidthLimited: false
+					}).placeAt("content");
+				});
+			});
+		</script>
+	</head>
+
+	<body class="sapUiBody" id="content">
+		<div id="splash-screen">
+			<div class="topnav">
+				<ul>
+					<img src="/icons/phoenix.png">
+					<li><a>top</a></li>
+					<li><a>new</a></li>
+					<li><a>show</a></li>
+					<li><a>ask</a></li>
+					<li><a>jobs</a></li>
+					<li style="margin-left:28.60%"><a style="color:#CAE4FB">about</a></li>
+				</ul>
+			</div>
+			<div class="navbar">
+				<ul>
+					<li><a>0</a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>
